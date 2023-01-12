@@ -22,7 +22,7 @@ class FormLogin extends StatelessWidget {
   final validatorPassword;
   final IconButton suffixIcon;
   final bool secure;
-  final submit;
+  final VoidCallback submit;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -7,12 +7,14 @@ class CardProductHeader extends StatelessWidget {
     required this.productName,
     required this.categoryName,
     required this.categoryPay,
+    required this.onPress,
   }) : super(key: key);
 
   final String image;
   final String productName;
   final String categoryName;
   final String categoryPay;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +67,7 @@ class CardProductHeader extends StatelessWidget {
           ],
         ),
         InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, '/');
-          },
+          onTap: onPress,
           borderRadius: BorderRadius.circular(30),
           child: Container(
             width: 40,

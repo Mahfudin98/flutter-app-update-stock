@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // ignore: unused_field
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   var username, password;

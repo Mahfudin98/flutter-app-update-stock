@@ -11,7 +11,7 @@ class RoundedButton extends StatelessWidget {
 
   final Size size;
   final String titleTxt;
-  final submit;
+  final VoidCallback submit;
 
   @override
   Widget build(BuildContext context) {

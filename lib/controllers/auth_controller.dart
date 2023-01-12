@@ -10,6 +10,7 @@ class AuthController extends ChangeNotifier {
 
   late UserModel profile;
 
+  // ignore: prefer_typing_uninitialized_variables
   var token;
 
   _getToken() async {
@@ -55,10 +56,11 @@ class AuthController extends ChangeNotifier {
         division: result['division_name'],
         image: result['image'],
       );
-      print(profile.namaDepan);
+      // print(profile.namaDepan);
     } else {
+      // ignore: avoid_print
       print(response.statusCode.toString());
-      print(token);
+      // print(token);
     }
   }
 }

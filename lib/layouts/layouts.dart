@@ -23,6 +23,7 @@ class _LayoutIndexState extends State<LayoutIndex> {
   Future<void> _checkIfLogin() async {
     final SharedPreferences localStorage = await _prefs;
     var token = localStorage.getString('data');
+    // ignore: avoid_print
     print(token);
     if (token != null) {
       if (mounted) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:update_stock_app/controllers/product_controller.dart';
 import 'package:update_stock_app/pages/components/card/card_product_list.dart';
+import 'package:update_stock_app/pages/components/card/modal/modal_content.dart';
 import 'package:update_stock_app/style/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/style/currency_format.dart';
@@ -98,6 +99,21 @@ class ListProduct extends StatelessWidget {
                       0,
                     ),
                     time: "2 Hari Lalu",
+                    onPress: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (BuildContext context) {
+                          return ModalContent(
+                            image: product.dataProduct[i].image,
+                            productName: product.dataProduct[i].productName,
+                            categoryName: product.dataProduct[i].categoryName,
+                            categoryPay: product.dataProduct[i].categoryPay,
+                            code: product.dataProduct[i].code,
+                          );
+                        },
+                      );
+                    },
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>

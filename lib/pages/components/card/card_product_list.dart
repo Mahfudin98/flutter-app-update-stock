@@ -16,6 +16,7 @@ class CardProductList extends StatelessWidget {
     required this.endUser,
     required this.stock,
     required this.time,
+    required this.onPress,
   }) : super(key: key);
 
   final String image;
@@ -27,6 +28,7 @@ class CardProductList extends StatelessWidget {
   final String endUser;
   final String stock;
   final String time;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class CardProductList extends StatelessWidget {
             productName: productName,
             categoryName: categoryName,
             categoryPay: categoryPay,
+            onPress: onPress,
           ),
           const SizedBox(height: 15),
           CardProductCenter(
