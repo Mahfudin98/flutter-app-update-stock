@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:update_stock_app/auth/login.dart';
-import 'package:update_stock_app/pages/index_pages.dart';
-import 'package:update_stock_app/services/service.dart';
+import 'package:update_stock_app/layouts/layouts.dart';
+import 'package:update_stock_app/services/provider.dart';
 import 'package:update_stock_app/style/constants.dart';
 
 void main() {
@@ -16,10 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ServiceApi()),
-      ],
+    return ProviderApi(
       child: MaterialApp(
         title: 'Update Stock App',
         theme: ThemeData(
@@ -27,9 +23,9 @@ class MyApp extends StatelessWidget {
           textTheme:
               GoogleFonts.poppinsTextTheme((Theme.of(context).textTheme)),
         ),
-        initialRoute: '/login',
+        initialRoute: '/',
         routes: {
-          '/': (context) => const IndexPages(),
+          '/': (context) => const LayoutIndex(),
           '/login': (context) => const LoginScreen(),
         },
       ),

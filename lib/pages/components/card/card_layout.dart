@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:update_stock_app/controllers/product_controller.dart';
 import 'package:update_stock_app/pages/components/card/card_product_list.dart';
-import 'package:update_stock_app/services/service.dart';
 import 'package:update_stock_app/style/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/style/currency_format.dart';
@@ -58,12 +58,12 @@ class ListProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () =>
-          Provider.of<ServiceApi>(context, listen: false).getDataProduct(),
+      onRefresh: () => Provider.of<ProductController>(context, listen: false)
+          .getDataProduct(),
       child: SizedBox(
         child: FutureBuilder(
-          future:
-              Provider.of<ServiceApi>(context, listen: false).getDataProduct(),
+          future: Provider.of<ProductController>(context, listen: false)
+              .getDataProduct(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -71,7 +71,7 @@ class ListProduct extends StatelessWidget {
               );
             }
 
-            return Consumer<ServiceApi>(builder: (context, product, _) {
+            return Consumer<ProductController>(builder: (context, product, _) {
               return ListView.separated(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 itemCount: product.dataProduct.length,

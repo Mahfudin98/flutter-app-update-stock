@@ -6,17 +6,17 @@ class RoundedButton extends StatelessWidget {
     Key? key,
     required this.size,
     required this.titleTxt,
+    required this.submit,
   }) : super(key: key);
 
   final Size size;
   final String titleTxt;
+  final submit;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/');
-      },
+      onTap: submit,
       borderRadius: BorderRadius.circular(30),
       child: Container(
         width: size.width * 0.8,

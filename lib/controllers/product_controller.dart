@@ -1,17 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:update_stock_app/models/product_model.dart';
+import 'package:update_stock_app/services/api.dart';
 
-class ServiceApi extends ChangeNotifier {
+class ProductController extends ChangeNotifier {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   List<ProductModel> _product = [];
   List<ProductModel> get dataProduct => _product;
 
-  final String link = "https://api-report.lsskincare.id/api/";
-
   Future<List<ProductModel>> getDataProduct() async {
-    final url = Uri.parse('${link}product-list-gudang');
-    final response = await http.get(url);
+    String? token;
+    final SharedPreferences localStorage = await _prefs;
+    token = localStorage.getString('data')?.replaceAll("\"", "");
+    var headers = {'Authorization': 'Bearer $token'};
+    final response = await http.get(ApiNetwork().listProduk, headers: headers);
 
     if (response.statusCode == 200) {
       final result =

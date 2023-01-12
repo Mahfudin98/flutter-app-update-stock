@@ -1,54 +1,69 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables, duplicate_ignore
+
+import 'package:flutter/material.dart';
+import 'package:update_stock_app/auth/components/input_container.dart';
 import 'package:update_stock_app/auth/components/rounded_button.dart';
-import 'package:update_stock_app/auth/components/rounded_input.dart';
-import 'package:update_stock_app/auth/components/rounded_password_input.dart';
+import 'package:update_stock_app/style/constants.dart';
 
 class FormLogin extends StatelessWidget {
   const FormLogin({
     Key? key,
-    required this.size,
-    required this.defaultLoginSize,
+    required this.formKey,
+    required this.validatorUsername,
+    required this.validatorPassword,
+    required this.suffixIcon,
+    required this.secure,
+    required this.submit,
   }) : super(key: key);
 
-  final Size size;
-  final double defaultLoginSize;
-
+  // ignore: prefer_typing_uninitialized_variables
+  final formKey;
+  final validatorUsername;
+  final validatorPassword;
+  final IconButton suffixIcon;
+  final bool secure;
+  final submit;
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: SingleChildScrollView(
-        // ignore: sized_box_for_whitespace
-        child: Container(
-          width: size.width,
-          height: defaultLoginSize,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Welcome back",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
+    Size size = MediaQuery.of(context).size;
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          // username
+          InputContainer(
+            child: TextFormField(
+              cursorColor: kPrimaryColor,
+              keyboardType: TextInputType.text,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.email, color: kPrimaryColor),
+                hintText: "Username",
+                border: InputBorder.none,
               ),
-              const SizedBox(height: 40),
-              // SvgPicture.asset('assets/images/login.svg'),
-              Image.network(
-                "https://lh3.googleusercontent.com/d/1BB-FX1SOgpmn_qqU9gyoFi0iGqayzk6b?authuser=0",
-                scale: 2.5,
-              ),
-              const SizedBox(height: 40),
-              RoundedInput(size: size),
-              RoundedPasswordInput(size: size),
-              RoundedButton(
-                size: size,
-                titleTxt: 'Login',
-              )
-            ],
+              validator: validatorUsername,
+            ),
           ),
-        ),
+          // password
+          InputContainer(
+            child: TextFormField(
+              cursorColor: kPrimaryColor,
+              obscureText: secure,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock, color: kPrimaryColor),
+                hintText: "Password",
+                border: InputBorder.none,
+                suffixIcon: suffixIcon,
+              ),
+              validator: validatorPassword,
+            ),
+          ),
+          RoundedButton(
+            size: size,
+            titleTxt: 'Login',
+            submit: submit,
+          )
+        ],
       ),
     );
   }
