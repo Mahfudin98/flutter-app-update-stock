@@ -14,6 +14,7 @@ class FormLogin extends StatelessWidget {
     required this.suffixIcon,
     required this.secure,
     required this.submit,
+    required this.text,
   }) : super(key: key);
 
   // ignore: prefer_typing_uninitialized_variables
@@ -23,6 +24,7 @@ class FormLogin extends StatelessWidget {
   final IconButton suffixIcon;
   final bool secure;
   final VoidCallback submit;
+  final text;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,7 +52,7 @@ class FormLogin extends StatelessWidget {
               obscureText: secure,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock, color: kPrimaryColor),
+                icon: const Icon(Icons.lock, color: kPrimaryColor),
                 hintText: "Password",
                 border: InputBorder.none,
                 suffixIcon: suffixIcon,
@@ -60,7 +62,7 @@ class FormLogin extends StatelessWidget {
           ),
           RoundedButton(
             size: size,
-            titleTxt: 'Login',
+            titleTxt: text,
             submit: submit,
           )
         ],

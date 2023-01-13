@@ -1,6 +1,8 @@
 const String link = "https://api-report.lsskincare.id/api/";
 
 class ApiNetwork {
+  final String imageLogo =
+      "https://lh3.googleusercontent.com/d/1BB-FX1SOgpmn_qqU9gyoFi0iGqayzk6b?authuser=0";
   final String imageURL = "https://api-report.lsskincare.id//storage/user/";
   var login = Uri.parse('${link}login');
   var userLogin = Uri.parse('${link}user-login');

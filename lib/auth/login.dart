@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:update_stock_app/auth/form_login.dart';
 import 'package:update_stock_app/controllers/auth_controller.dart';
 import 'package:update_stock_app/pages/index_pages.dart';
+import 'package:update_stock_app/services/api.dart';
 import 'package:update_stock_app/style/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -31,10 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  // _showMsg(msg) {
-  //   final snackBar = SnackBar(content: Text(msg));
-  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
-  // }
+  _showMsg(msg) {
+    final snackBar = SnackBar(content: Text(msg));
+    // _scaffoldKey.currentState!.showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 40),
                     Image.network(
-                      "https://lh3.googleusercontent.com/d/1BB-FX1SOgpmn_qqU9gyoFi0iGqayzk6b?authuser=0",
-                      scale: 2.5,
+                      ApiNetwork().imageLogo,
+                      width: 150,
+                      height: 150,
                     ),
                     const SizedBox(height: 40),
                     FormLogin(
@@ -121,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _login();
                         }
                       },
+                      text: _isLoading ? 'Processing..' : 'Login',
                     ),
                   ],
                 ),
@@ -155,9 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     } else {
-      // _showMsg(body['message']);
-      // ignore: avoid_print
-      print("Error");
+      _showMsg(body['message']);
     }
 
     setState(() {
