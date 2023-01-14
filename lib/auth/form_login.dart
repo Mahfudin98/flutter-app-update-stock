@@ -38,7 +38,7 @@ class FormLogin extends StatelessWidget {
               cursorColor: kPrimaryColor,
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
-                icon: Icon(Icons.email, color: kPrimaryColor),
+                icon: Icon(Icons.alternate_email, color: kPrimaryColor),
                 hintText: "Username",
                 border: InputBorder.none,
               ),

@@ -63,22 +63,28 @@ class _FormUpdateState extends State<FormUpdate> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Form(
         key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFormField(
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                hintText: "Masukan Stok Baru",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+        child: Container(
+          height: 40,
+          decoration: BoxDecoration(
+            color: Colors.green[100],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: TextFormField(
+            keyboardType: TextInputType.phone,
+            decoration: InputDecoration(
+              hintText: "Masukan Stok Baru",
+              hintStyle: TextStyle(color: Colors.green[900]),
+              icon: Icon(
+                Icons.app_registration_rounded,
+                color: Colors.green[900],
               ),
-              onFieldSubmitted: (_) {
-                FocusScope.of(context).requestFocus(stockNode);
-              },
+              border: InputBorder.none,
             ),
-          ],
+            onFieldSubmitted: (_) {
+              FocusScope.of(context).requestFocus(stockNode);
+            },
+          ),
         ),
       ),
     );
