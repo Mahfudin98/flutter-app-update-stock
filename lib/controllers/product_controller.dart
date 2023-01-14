@@ -28,4 +28,24 @@ class ProductController extends ChangeNotifier {
       throw Exception();
     }
   }
+
+  Future<ProductModel> findCodeProduct(String code) async {
+    return _product.firstWhere((i) => i.code == code);
+  }
+
+  Future<bool> updateStock(String code, stock) async {
+    final url = Uri.parse(ApiNetwork().updateStockLink + code);
+    final response = await http.post(url, body: {
+      'stock': stock,
+    });
+
+    final result = json.decode(response.body);
+
+    if (response.statusCode == 200 && result['status'] == 'success') {
+      notifyListeners();
+      return true;
+    }
+
+    return false;
+  }
 }

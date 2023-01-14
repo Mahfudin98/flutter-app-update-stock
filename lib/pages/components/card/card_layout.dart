@@ -52,10 +52,9 @@ class CardLayout extends StatelessWidget {
 }
 
 class ListProduct extends StatelessWidget {
-  ListProduct({
+  const ListProduct({
     Key? key,
   }) : super(key: key);
-  final List<String> entries = <String>['Day Cream', 'Night Cream', 'Toner'];
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -110,6 +109,10 @@ class ListProduct extends StatelessWidget {
                             categoryName: product.dataProduct[i].categoryName,
                             categoryPay: product.dataProduct[i].categoryPay,
                             code: product.dataProduct[i].code,
+                            stock: CurrencyFormat.convertNumber(
+                              int.parse(product.dataProduct[i].stock),
+                              0,
+                            ),
                           );
                         },
                       );

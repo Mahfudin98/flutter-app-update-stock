@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:update_stock_app/pages/components/card/modal/form_update.dart';
 
 class ModalContent extends StatelessWidget {
   const ModalContent({
@@ -8,6 +10,7 @@ class ModalContent extends StatelessWidget {
     required this.categoryName,
     required this.categoryPay,
     required this.code,
+    required this.stock,
   }) : super(key: key);
 
   final String image;
@@ -15,6 +18,7 @@ class ModalContent extends StatelessWidget {
   final String categoryName;
   final String categoryPay;
   final String code;
+  final String stock;
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +41,40 @@ class ModalContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.blue[50],
-            ),
-            child: Text(
-              'Code : $code',
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.blue,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.blue[50],
+                ),
+                child: Text(
+                  'Code : $code',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.blue,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.green[50],
+                ),
+                child: Text(
+                  'Stok : $stock',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
           Container(
@@ -103,6 +127,7 @@ class ModalContent extends StatelessWidget {
               ],
             ),
           ),
+          FormUpdate(code: code),
           ElevatedButton(
             child: const Text('Close BottomSheet'),
             onPressed: () => Navigator.pop(context),
