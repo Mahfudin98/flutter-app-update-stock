@@ -20,6 +20,7 @@ class _IndexPagesState extends State<IndexPages> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
+      resizeToAvoidBottomInset: false,
       body: RefreshIndicator(
         onRefresh: () =>
             Provider.of<AuthController>(context, listen: false).getProfile(),

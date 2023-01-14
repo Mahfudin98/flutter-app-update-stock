@@ -63,28 +63,42 @@ class _FormUpdateState extends State<FormUpdate> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Form(
         key: _formKey,
-        child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-            color: Colors.green[100],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: TextFormField(
-            keyboardType: TextInputType.phone,
-            decoration: InputDecoration(
-              hintText: "Masukan Stok Baru",
-              hintStyle: TextStyle(color: Colors.green[900]),
-              icon: Icon(
-                Icons.app_registration_rounded,
-                color: Colors.green[900],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 40,
+              width: size.width * 0.6,
+              decoration: BoxDecoration(
+                color: Colors.green[100],
+                borderRadius: BorderRadius.circular(10),
               ),
-              border: InputBorder.none,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextFormField(
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  hintText: "Masukan Stok Baru",
+                  hintStyle: TextStyle(color: Colors.green[900]),
+                  icon: Icon(
+                    Icons.app_registration_rounded,
+                    color: Colors.green[900],
+                  ),
+                  border: InputBorder.none,
+                ),
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(stockNode);
+                },
+              ),
             ),
-            onFieldSubmitted: (_) {
-              FocusScope.of(context).requestFocus(stockNode);
-            },
-          ),
+            SizedBox(
+              width: size.width * 0.2,
+              height: 40,
+              child: ElevatedButton(
+                child: const Text('Submit'),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ],
         ),
       ),
     );

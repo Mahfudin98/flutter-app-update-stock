@@ -103,15 +103,20 @@ class ListProduct extends StatelessWidget {
                         context: context,
                         backgroundColor: Colors.transparent,
                         builder: (BuildContext context) {
-                          return ModalContent(
-                            image: product.dataProduct[i].image,
-                            productName: product.dataProduct[i].productName,
-                            categoryName: product.dataProduct[i].categoryName,
-                            categoryPay: product.dataProduct[i].categoryPay,
-                            code: product.dataProduct[i].code,
-                            stock: CurrencyFormat.convertNumber(
-                              int.parse(product.dataProduct[i].stock),
-                              0,
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
+                            child: ModalContent(
+                              image: product.dataProduct[i].image,
+                              productName: product.dataProduct[i].productName,
+                              categoryName: product.dataProduct[i].categoryName,
+                              categoryPay: product.dataProduct[i].categoryPay,
+                              code: product.dataProduct[i].code,
+                              stock: CurrencyFormat.convertNumber(
+                                int.parse(product.dataProduct[i].stock),
+                                0,
+                              ),
                             ),
                           );
                         },
