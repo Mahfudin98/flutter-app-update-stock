@@ -5,6 +5,9 @@ import 'package:update_stock_app/pages/components/card/modal/modal_content.dart'
 import 'package:update_stock_app/style/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/style/currency_format.dart';
+import 'dart:async' show Timer;
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:update_stock_app/style/time_format_custom.dart';
 
 class CardLayout extends StatelessWidget {
   const CardLayout({
@@ -55,6 +58,7 @@ class ListProduct extends StatelessWidget {
   const ListProduct({
     Key? key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -97,7 +101,8 @@ class ListProduct extends StatelessWidget {
                       int.parse(product.dataProduct[i].stock),
                       0,
                     ),
-                    time: "2 Hari Lalu",
+                    time: TimeFormatCustom()
+                        .convertToAgo(product.dataProduct[i].time),
                     onPress: () {
                       showModalBottomSheet<void>(
                         context: context,
