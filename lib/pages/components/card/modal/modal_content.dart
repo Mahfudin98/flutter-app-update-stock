@@ -38,7 +38,10 @@ class ModalContent extends StatelessWidget {
             categoryName: categoryName,
             stock: stock,
           ),
-          FormUpdate(code: code),
+          FormUpdate(
+            code: code,
+            stock: stock,
+          ),
         ],
       ),
     );

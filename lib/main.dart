@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:update_stock_app/auth/login.dart';
 import 'package:update_stock_app/layouts/layouts.dart';
 import 'package:update_stock_app/services/provider.dart';
 import 'package:update_stock_app/style/constants.dart';
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const LayoutIndex(),
-          '/login': (context) => const LoginScreen(),
         },
       ),
     );

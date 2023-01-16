@@ -34,14 +34,20 @@ class ProductController extends ChangeNotifier {
   }
 
   Future<bool> updateStock(String code, stock) async {
+    String? token;
+    final SharedPreferences localStorage = await _prefs;
+    token = localStorage.getString('data')?.replaceAll("\"", "");
+    var headers = {'Authorization': 'Bearer $token'};
     final url = Uri.parse(ApiNetwork().updateStockLink + code);
-    final response = await http.post(url, body: {
-      'stock': stock,
-    });
+    final response = await http.post(url,
+        body: {
+          'stock': stock,
+        },
+        headers: headers);
 
-    final result = json.decode(response.body);
+    final result = json.decode(json.encode(response.body));
 
-    if (response.statusCode == 200 && result['status'] == 'success') {
+    if (response.statusCode == 200) {
       notifyListeners();
       return true;
     }

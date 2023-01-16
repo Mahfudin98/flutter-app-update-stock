@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:update_stock_app/controllers/product_controller.dart';
 
 class FormUpdate extends StatefulWidget {
-  const FormUpdate({Key? key, required this.code}) : super(key: key);
+  const FormUpdate({Key? key, required this.code, required this.stock})
+      : super(key: key);
 
   final String code;
+  final String stock;
 
   @override
   State<FormUpdate> createState() => _FormUpdateState();
@@ -17,15 +19,13 @@ class _FormUpdateState extends State<FormUpdate> {
 
   FocusNode stockNode = FocusNode();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
       Provider.of<ProductController>(context, listen: false)
           .findCodeProduct(widget.code)
           .then((response) {
-        _stock.text = response.code;
+        _stock.text = response.stock;
       });
     });
     super.initState();
@@ -42,6 +42,14 @@ class _FormUpdateState extends State<FormUpdate> {
         if (res) {
           Provider.of<ProductController>(context, listen: false)
               .getDataProduct();
+          var snackBar = const SnackBar(
+            content: Text('Stok berhasil diupdate!'),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          Navigator.pop(context);
+          setState(() {
+            _isLoading = false;
+          });
         } else {
           var snackBar = const SnackBar(
             content: Text('Ops, error. Hubungi Mahfud!'),
@@ -61,21 +69,21 @@ class _FormUpdateState extends State<FormUpdate> {
     return Container(
       width: size.width,
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Form(
-        key: _formKey,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 40,
-              width: size.width * 0.6,
-              decoration: BoxDecoration(
-                color: Colors.green[100],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextFormField(
-                keyboardType: TextInputType.phone,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            height: 40,
+            width: size.width * 0.6,
+            decoration: BoxDecoration(
+              color: Colors.green[100],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextField(
+                controller: _stock,
+                autofocus: true,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: "Masukan Stok Baru",
                   hintStyle: TextStyle(color: Colors.green[900]),
@@ -85,21 +93,26 @@ class _FormUpdateState extends State<FormUpdate> {
                   ),
                   border: InputBorder.none,
                 ),
-                onFieldSubmitted: (_) {
+                onSubmitted: (_) {
                   FocusScope.of(context).requestFocus(stockNode);
-                },
-              ),
+                }),
+          ),
+          SizedBox(
+            width: size.width * 0.2,
+            height: 40,
+            child: ElevatedButton(
+              child: _isLoading
+                  ? const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    )
+                  : const Icon(
+                      Icons.save,
+                      color: Colors.white,
+                    ),
+              onPressed: () => submit(context),
             ),
-            SizedBox(
-              width: size.width * 0.2,
-              height: 40,
-              child: ElevatedButton(
-                child: const Text('Submit'),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
