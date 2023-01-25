@@ -29,7 +29,10 @@ class CardProductHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               child: Image.network(
                 image,
-                scale: 23,
+                height: 80,
+                width: 80,
+                alignment: Alignment.center,
+                fit: BoxFit.cover,
               ),
             ),
             // ignore: prefer_const_constructors
@@ -44,7 +47,7 @@ class CardProductHeader extends StatelessWidget {
                 Text(
                   productName,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
