@@ -10,7 +10,7 @@ class HeaderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Positioned(
-      top: 130,
+      top: 30,
       width: size.width,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

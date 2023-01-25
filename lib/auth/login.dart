@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:update_stock_app/auth/form_login.dart';
 import 'package:update_stock_app/controllers/auth_controller.dart';
-import 'package:update_stock_app/pages/index_pages.dart';
+import 'package:update_stock_app/pages/product_page.dart';
 import 'package:update_stock_app/services/api.dart';
 import 'package:update_stock_app/style/constants.dart';
 
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const IndexPages(),
+          builder: (context) => const ProductPages(),
         ),
       );
     } else {

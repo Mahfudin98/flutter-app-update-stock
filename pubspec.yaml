@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.0
   shared_preferences: ^2.0.15
   timeago: ^3.0.0-nullsafety.0
+  sidebarx: ^0.14.0
   
 dev_dependencies:
   flutter_test:
