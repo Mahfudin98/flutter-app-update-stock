@@ -5,8 +5,6 @@ import 'package:update_stock_app/controllers/auth_controller.dart';
 import 'package:update_stock_app/pages/product_page.dart';
 import 'package:update_stock_app/services/api.dart';
 
-import '../pages/product_page.dart';
-
 void main() {
   runApp(SidebarXExampleApp());
 }
@@ -28,6 +26,7 @@ class SidebarXExampleApp extends StatelessWidget {
               ? AppBar(
                   backgroundColor: canvasColor,
                   title: Text(_getTitleByIndex(_controller.selectedIndex)),
+                  elevation: 0,
                   leading: IconButton(
                     onPressed: () {
                       // if (!Platform.isAndroid && !Platform.isIOS) {
@@ -170,8 +169,8 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Stok Produk',
         ),
         SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
+          icon: Icons.archive,
+          label: 'Logistic',
         ),
       ],
     );
@@ -214,7 +213,7 @@ String _getTitleByIndex(int index) {
     case 0:
       return 'Stok Produk';
     case 1:
-      return 'Search';
+      return 'Logistic';
     default:
       return 'Not found page';
   }

@@ -45,6 +45,7 @@ class ProductController extends ChangeNotifier {
         },
         headers: headers);
 
+    // ignore: unused_local_variable
     final result = json.decode(json.encode(response.body));
 
     if (response.statusCode == 200) {

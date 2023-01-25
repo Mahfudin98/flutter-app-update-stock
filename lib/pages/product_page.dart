@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:update_stock_app/pages/components/card/card_layout.dart';
-import 'package:update_stock_app/pages/components/header/header_bar.dart';
 import 'package:update_stock_app/pages/components/header/header_card.dart';
 
 class ProductPages extends StatefulWidget {

@@ -41,6 +41,8 @@ class ModalCardProduct extends StatelessWidget {
                   image,
                   height: 50,
                   width: 50,
+                  alignment: Alignment.center,
+                  fit: BoxFit.cover,
                 ),
               ),
               // ignore: prefer_const_constructors

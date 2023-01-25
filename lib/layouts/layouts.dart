@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:update_stock_app/auth/login.dart';
 import 'package:update_stock_app/layouts/sidebar_example.dart';
-import 'package:update_stock_app/pages/product_page.dart';
 
 class LayoutIndex extends StatefulWidget {
   const LayoutIndex({Key? key}) : super(key: key);

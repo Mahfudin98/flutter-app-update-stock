@@ -5,8 +5,6 @@ import 'package:update_stock_app/pages/components/card/modal/modal_content.dart'
 import 'package:update_stock_app/style/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/style/currency_format.dart';
-import 'dart:async' show Timer;
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:update_stock_app/style/time_format_custom.dart';
 
 class CardLayout extends StatelessWidget {
@@ -46,7 +44,7 @@ class CardLayout extends StatelessWidget {
             width: size.width,
             height: size.height * 0.6,
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: ListProduct(),
+            child: const ListProduct(),
           ),
         ],
       ),
