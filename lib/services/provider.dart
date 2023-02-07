@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/controllers/auth_controller.dart';
+import 'package:update_stock_app/controllers/logstic_controller.dart';
 import 'package:update_stock_app/controllers/product_controller.dart';
 
 class ProviderApi extends StatelessWidget {
@@ -15,6 +16,9 @@ class ProviderApi extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProductController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LogisticController(),
         ),
       ],
       child: child,

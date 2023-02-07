@@ -9,4 +9,5 @@ class ApiNetwork {
   var userImage = Uri.parse('${link}user-image');
   var listProduk = Uri.parse('${link}product-list-gudang');
   var updateStockLink = '${link}product-stock-update/';
+  var listLogistic = Uri.parse('${link}index-logistic');
 }

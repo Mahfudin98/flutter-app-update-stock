@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:update_stock_app/controllers/auth_controller.dart';
+import 'package:update_stock_app/pages/logistic_page.dart';
 import 'package:update_stock_app/pages/product_page.dart';
 import 'package:update_stock_app/services/api.dart';
 
@@ -194,9 +195,9 @@ class _ScreensExample extends StatelessWidget {
         final pageTitle = _getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
+            return const LogisticPage();
+          case 1:
             return const ProductPages();
-          // case 1:
-          //   return ProductPage();
           default:
             return Text(
               pageTitle,
