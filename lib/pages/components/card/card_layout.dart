@@ -102,28 +102,7 @@ class ListProduct extends StatelessWidget {
                     time: TimeFormatCustom()
                         .convertToAgo(product.dataProduct[i].time),
                     onPress: () {
-                      showModalBottomSheet<void>(
-                        context: context,
-                        backgroundColor: Colors.transparent,
-                        builder: (BuildContext context) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).viewInsets.bottom),
-                            child: ModalContent(
-                              image: product.dataProduct[i].image,
-                              productName: product.dataProduct[i].productName,
-                              categoryName: product.dataProduct[i].categoryName,
-                              categoryPay: product.dataProduct[i].categoryPay,
-                              code: product.dataProduct[i].code,
-                              stock: CurrencyFormat.convertNumber(
-                                int.parse(product.dataProduct[i].stock),
-                                0,
-                              ),
-                            ),
-                          );
-                        },
-                      );
+                      ModalProduct(context, product, i);
                     },
                   );
                 },
@@ -134,6 +113,31 @@ class ListProduct extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  Future<void> ModalProduct(
+      BuildContext context, ProductController product, int i) {
+    return showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: ModalContent(
+            image: product.dataProduct[i].image,
+            productName: product.dataProduct[i].productName,
+            categoryName: product.dataProduct[i].categoryName,
+            categoryPay: product.dataProduct[i].categoryPay,
+            code: product.dataProduct[i].code,
+            stock: CurrencyFormat.convertNumber(
+              int.parse(product.dataProduct[i].stock),
+              0,
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:update_stock_app/controllers/logstic_controller.dart';
 import 'package:update_stock_app/pages/components/card/list_logistic.dart';
+import 'package:update_stock_app/pages/components/card/modal/modal_logistic.dart';
 
 class CardLogistic extends StatelessWidget {
   const CardLogistic({
@@ -40,7 +41,7 @@ class CardLogistic extends StatelessWidget {
                       stock_logistic: logistic.dataLogistic[i].stock_logistic,
                       satuan: logistic.dataLogistic[i].satuan,
                       onPress: () {
-                        ShowModal(context);
+                        ModalLogistic(context, logistic, i);
                       },
                     );
                   },
@@ -56,31 +57,5 @@ class CardLogistic extends StatelessWidget {
   }
 
   // ignore: non_constant_identifier_names
-  PersistentBottomSheetController<void> ShowModal(BuildContext context) {
-    return showBottomSheet<void>(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext context) {
-        return Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: Container(
-            // height: size.height * 0.8,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 20,
-            ),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-              color: Colors.amber,
-            ),
-            child: Text("data"),
-          ),
-        );
-      },
-    );
-  }
+
 }
