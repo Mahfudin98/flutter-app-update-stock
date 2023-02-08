@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:update_stock_app/controllers/logstic_controller.dart';
 import 'package:update_stock_app/pages/components/card/modal/form_update_logistic.dart';
 import 'package:update_stock_app/pages/components/card/modal/modal_card_logistic.dart';
-import 'package:update_stock_app/style/constants.dart';
 
 // ignore: non_constant_identifier_names
 PersistentBottomSheetController<void> ModalLogistic(
@@ -37,7 +36,10 @@ PersistentBottomSheetController<void> ModalLogistic(
                 stock_logistic: logistic.dataLogistic[i].stock_logistic,
                 satuan: logistic.dataLogistic[i].satuan,
               ),
-              const FormUpdateLogistic(),
+              FormUpdateLogistic(
+                id: logistic.dataLogistic[i].id,
+                stockLogistic: logistic.dataLogistic[i].stock_logistic,
+              ),
             ],
           ),
         ),

@@ -32,4 +32,30 @@ class LogisticController extends ChangeNotifier {
   Future<LogisticModel> findIdLogistic(String id) async {
     return _logistic.firstWhere((i) => i.id == id);
   }
+
+  Future<bool> updateLogistic(String id, stockLogistic) async {
+    String? token;
+    final SharedPreferences localStorage = await _pref;
+    token = localStorage.getString('data')?.replaceAll("\"", "");
+    var headers = {'Authorization': 'Bearer  $token'};
+    final url = Uri.parse(ApiNetwork().updateStockLogistic + id);
+    final response = await http.post(
+      url,
+      body: {
+        'stock_logistic': stockLogistic,
+      },
+      headers: headers,
+    );
+
+    // ignore: unused_local_variable
+    final result = json.decode(json.encode(response.body));
+
+    if (response.statusCode == 200) {
+      getDataLogistic();
+      notifyListeners();
+      return true;
+    }
+
+    return false;
+  }
 }
