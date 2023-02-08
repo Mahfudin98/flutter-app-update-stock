@@ -195,9 +195,9 @@ class _ScreensExample extends StatelessWidget {
         final pageTitle = _getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
-            return const LogisticPage();
-          case 1:
             return const ProductPages();
+          case 1:
+            return const LogisticPage();
           default:
             return Text(
               pageTitle,
