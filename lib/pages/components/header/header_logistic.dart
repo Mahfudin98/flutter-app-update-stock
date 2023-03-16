@@ -7,8 +7,9 @@ class HeaderLogistic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 30),
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height * 0.1,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

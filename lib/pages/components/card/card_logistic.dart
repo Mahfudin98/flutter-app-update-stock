@@ -12,15 +12,14 @@ class CardLogistic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+    return SizedBox(
+      width: size.width,
+      height: size.height * 0.75,
       child: RefreshIndicator(
         onRefresh: () => Provider.of<LogisticController>(context, listen: false)
             .getDataLogistic(),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          width: size.width,
-          height: size.height * 0.77,
+          padding: const EdgeInsets.symmetric(vertical: 0),
           child: FutureBuilder(
             future: Provider.of<LogisticController>(context, listen: false)
                 .getDataLogistic(),
