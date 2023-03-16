@@ -20,7 +20,7 @@ class CardLogistic extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           width: size.width,
-          height: size.height * 0.7,
+          height: size.height * 0.77,
           child: FutureBuilder(
             future: Provider.of<LogisticController>(context, listen: false)
                 .getDataLogistic(),

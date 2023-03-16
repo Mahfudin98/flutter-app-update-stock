@@ -21,6 +21,7 @@ class ListLogistic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double c_width = MediaQuery.of(context).size.width * 0.7;
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
@@ -38,11 +39,15 @@ class ListLogistic extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                nama_barang,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+              Container(
+                padding: const EdgeInsets.all(0),
+                width: c_width,
+                child: Text(
+                  nama_barang,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(height: 5),

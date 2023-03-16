@@ -18,6 +18,7 @@ class CardProductHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double cWidth = MediaQuery.of(context).size.width * 0.4;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,11 +45,15 @@ class CardProductHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Text(
-                  productName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                Container(
+                  padding: const EdgeInsets.all(0),
+                  width: cWidth,
+                  child: Text(
+                    productName,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 Text(

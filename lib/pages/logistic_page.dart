@@ -19,9 +19,8 @@ class _LogisticPageState extends State<LogisticPage> {
         color: const Color.fromARGB(77, 231, 231, 231),
         width: size.width,
         height: size.height,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
           children: [

@@ -13,6 +13,7 @@ class CardProductFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double cWidth = MediaQuery.of(context).size.width * 0.3;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -97,14 +98,17 @@ class CardProductFooter extends StatelessWidget {
                       color: Colors.black87,
                     ),
                   ),
-                  Text(
-                    time,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                    ),
-                  ),
+                  Container(
+                      padding: const EdgeInsets.all(0),
+                      width: cWidth,
+                      child: Text(
+                        time,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),
+                      )),
                 ],
               ),
             ],

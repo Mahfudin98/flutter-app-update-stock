@@ -116,6 +116,7 @@ class ListProduct extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Future<void> ModalProduct(
       BuildContext context, ProductController product, int i) {
     return showModalBottomSheet<void>(
